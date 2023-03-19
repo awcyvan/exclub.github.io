@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eyes</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: rgba(0,0,0,0);
+        }
+        .face{
+            position: relative;
+            left: 47%;
+            top: -45%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ffcd00;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .face::before{
+            content: "";
+            position: absolute;
+            top: 36px;
+            width: 30px;
+            height: 14px;
+            background: #b57700;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            transition: 0.5s;
+        }
+        .face:hover::before{
+            top: 42px;
+            width: 30px;
+            height: 4px;
+            background: #b57700;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            transition: 0.5s;
+        }
+        .eyes{
+            position: relative;
+            top: -8px;
+            display: flex;
+        }
+        .eyes .eye{
+            position: relative;
+            width: 16px;
+            height: 16px;
+            display: block;
+            background: #fff;
+            margin: 0 3px;
+            border-radius: 50%;
+        }
+        .eyes .eye::before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%,-50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./static/js/jquery.min.js"></script>
+    <script>
+        document.querySelector('body').addEventListener('mousemove',eyeball);
+        function eyeball(){
+            var eye=document.querySelectorAll('.eye');
+            eye.forEach(function(eye){
+                let x=eye.getBoundingClientRect().left+eye.clientWidth/2;
+                let y=eye.getBoundingClientRect().top+eye.clientHeight/2;
+                let randian=Math.atan2(event.pageX-x,event.pageY-y);
+                let rot=randian*(180/Math.PI)*-1+270;
+                eye.style.transform="rotate("+rot+"deg)"
+            })
+        }
+        document.querySelector('body').addEventListener('click',function(){
+            window.open('./awcyvan.html');
+        });
+    </script>
+</body>
+</html>

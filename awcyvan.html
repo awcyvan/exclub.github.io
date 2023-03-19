@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>awcyvan</title>
+    <script type="text/javascript" src="./static/js/jquery.min.js"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+        .fuck{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: rgb(0,0,0);
+        }
+        .face{
+            position: relative;
+            left: -45%;
+            top: 45%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ffcd00;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .face::before{
+            content: "";
+            position: absolute;
+            top: 36px;
+            width: 30px;
+            height: 14px;
+            background: #b57700;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            transition: 0.5s;
+        }
+        .face:hover::before{
+            top: 42px;
+            width: 30px;
+            height: 4px;
+            background: #b57700;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            transition: 0.5s;
+        }
+        .eyes{
+            position: relative;
+            top: -8px;
+            display: flex;
+        }
+        .eyes .eye{
+            position: relative;
+            width: 16px;
+            height: 16px;
+            display: block;
+            background: #fff;
+            margin: 0 3px;
+            border-radius: 50%;
+        }
+        .eyes .eye::before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%,-50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+        @media(hover:hover){
+            #awcyvan_clock{
+                position:fixed;
+                top:90%;
+                left:80%;
+                width:20%;
+                height:20%;
+                border:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+                z-index:1;
+                opacity:1;
+            }
+        }
+        @media not(hover:hover){
+            #awcyvan_clock{
+                position:fixed;
+                top:88%;
+                left:55%;
+                width:50%;
+                height:50%;
+                border:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+                z-index:-1;
+                opacity:1;
+            }
+        }
+        .awcyvan{
+            position: absolute;
+            top: 0;
+            left: 5%;
+            color: #fff;
+        }
+        .awcyvan span{
+            position: relative;
+            display: inline-flex;
+            width: 180px;
+            height: 55px;
+            margin: 0 15px;
+            perspective: 1000px;
+        }
+        .awcyvan span a{
+            font-size: 19px;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            transform: translateZ(-25px);
+            transition: transform 0.25s;
+            font-family: sans-serif;
+        }
+        .awcyvan span a::before,.awcyvan span a::after{
+            position: absolute;
+            content: '返回';
+            text-transform: uppercase;
+            width: 180px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid #000;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .awcyvan span a::before{
+            color: #fff;
+            background-color: #000;
+            transform: rotateY(0deg) translateZ(25px);
+        }
+        .awcyvan span a::after{
+            color: #000;
+            background-color: #fff;
+            transform: rotateX(90deg) translateZ(25px);
+        }
+        .awcyvan span a:hover{
+            transform: translateZ(-25px) rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" style="width: 100%; height: 100%;left: 0;top: 0;position: absolute;"></canvas>
+    <script>
+        var canvas=document.getElementById('canvas'),
+        ctx=canvas.getContext('2d'),
+        w=canvas.width=window.innerWidth,
+        h=canvas.height=window.innerHeight,
+        hue=217,
+        stars=[],
+        count=0,
+        maxStars=1400;
+        var canvas2=document.createElement('canvas'),
+            ctx2=canvas2.getContext('2d');
+            canvas2.width=100;
+            canvas2.height=100;
+        var half=canvas2.width/2,
+            gradient2=ctx2.createRadialGradient(half,half,0,half,half,half);
+            gradient2.addColorStop(0.025,'#fff');
+            gradient2.addColorStop(0.1,'hsl('+hue+',61%,33%)');
+            gradient2.addColorStop(0.25,'hsl('+hue+',64%,6%)');
+            gradient2.addColorStop(1,'transparent');
+            ctx2.fillStyle=gradient2;
+            ctx2.beginPath();
+            ctx2.arc(half,half,half,0,Math.PI * 2);
+            ctx2.fill();
+        // End cache
+        function random(min,max){
+        if(arguments.length<2){
+            max=min;
+            min=0;
+        }
+        if(min>max){
+            var hold=max;
+            max=min;
+            min=hold;
+        }
+        return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        function maxOrbit(x,y){
+            var max=Math.max(x,y),
+                diameter=Math.round(Math.sqrt(max*max+max*max));
+            return diameter/2;
+        }
+        var Star=function(){
+            this.orbitRadius=random(maxOrbit(w,h));
+            this.radius=random(60,this.orbitRadius)/12;
+            this.orbitX=w/2;
+            this.orbitY=h/2;
+            this.timePassed=random(0,maxStars);
+            this.speed=random(this.orbitRadius)/500000;
+            this.alpha=random(2,10)/10;
+            count++;
+            stars[count]=this;
+        }
+        Star.prototype.draw=function(){
+            var x=Math.sin(this.timePassed)*this.orbitRadius+this.orbitX,
+                y=Math.cos(this.timePassed)*this.orbitRadius+this.orbitY,
+                twinkle=random(10);
+            if(twinkle===1 && this.alpha>0){
+                this.alpha-=0.05;
+            }
+            else if(twinkle===2 && this.alpha<1){
+                this.alpha+=0.05;
+            }
+            ctx.globalAlpha=this.alpha;
+            ctx.drawImage(canvas2,x-this.radius/2,y-this.radius/2,this.radius,this.radius);
+            this.timePassed+=this.speed;
+        }
+        for(var i=0;i<maxStars;i++){
+            new Star();
+        }
+        function animation(){
+            ctx.globalCompositeOperation='source-over';
+            ctx.globalAlpha=0.8;
+            ctx.fillStyle='hsla('+hue+',64%,6%,1)';
+            ctx.fillRect(0,0,w,h)
+            ctx.globalCompositeOperation='lighter';
+            for(var i=1,l=stars.length;i<l;i++){
+                stars[i].draw();
+            }
+            window.requestAnimationFrame(animation);
+        }
+        animation();
+    </script>
+    <iframe id="awcyvan_clock" src="./clock.html" frameborder="0" scrolling="no"></iframe>
+    <div class="fuck">
+        <div class="face">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector('body').addEventListener('mousemove',eyeball);
+        function eyeball(){
+            var eye=document.querySelectorAll('.eye');
+            eye.forEach(function(eye){
+                let x=eye.getBoundingClientRect().left+eye.clientWidth/2;
+                let y=eye.getBoundingClientRect().top+eye.clientHeight/2;
+                let randian=Math.atan2(event.pageX-x,event.pageY-y);
+                let rot=randian*(180/Math.PI)*-1+270;
+                eye.style.transform="rotate("+rot+"deg)"
+            })
+        }
+    </script>
+    <div class="awcyvan">
+        <p>恭喜，你发现了隐藏页面！</p>
+        <p>显然，这是awcyvan，也就是我，自己写的</p>
+        <p>为了保持官网展示的美观，所以我牺牲了一下自己，把自己的介绍放在了这里。</p>
+        <h4>awcyvan</h4>
+        <p>极致网络社</p>
+        <p>编程团队核心成员</p>
+        <h4>QQ:3107918016</h4>
+        <h5>Email:3107918016@qq.com</h5>
+        <br>
+        <p>以及一些别的东西</p>
+        <p>我的luogu号: www.luogu.com.cn/user/691465</p>
+        <p>Github: github.com/awcyvan</p>
+        <p>bilibili: 我的确有，但是那里没啥好看的，看我感觉还不如去看一数</p>
+        <p>blog: home.cnblogs.com/u/awcyvan以及luogu的博客（真的，没啥好看的）</p>
+        <p>社团的luogu团队: www.luogu.com.cn/team/31830</p>
+        <br>
+        <p>------By awcyvan</p>
+        <span>
+            <a href="./index.html"></a>
+        </span>
+    </div>
+</body>
+</html>
