@@ -8,9 +8,18 @@
         html,body{
             margin: 0;
             padding: 0;
+            display: flex;
             box-sizing: border-box;
             width: 100%;
             height: 100%;
+        }
+        #awcyvan_weather{
+            position: absolute;
+            top: 2%;
+            left: 70%;
+            width: 470px;
+            height: 682px;
+            /* z-index: -1; */
         }
         .fuck{
             margin: 0;
@@ -21,11 +30,11 @@
             justify-content: center;
             align-items: center;
             display: flex;
-            background: rgb(0,0,0);
+            background: rgba(0,0,0,0);
         }
         .face{
             position: relative;
-            left: -45%;
+            left: -40%;
             top: 45%;
             width: 60px;
             height: 60px;
@@ -112,7 +121,7 @@
         }
         .awcyvan{
             position: absolute;
-            top: 0;
+            top: 2%;
             left: 5%;
             color: #fff;
         }
@@ -245,6 +254,7 @@
         animation();
     </script>
     <iframe id="awcyvan_clock" src="./clock.html" frameborder="0" scrolling="no"></iframe>
+    <!-- <iframe id="awcyvan_weather" src="./weather-app/index.html" frameborder="0" scrolling="no"></iframe> -->
     <div class="fuck">
         <div class="face">
             <div class="eyes">
@@ -253,7 +263,6 @@
             </div>
         </div>
     </div>
-    
     <script>
         document.querySelector('body').addEventListener('mousemove',eyeball);
         function eyeball(){
@@ -267,6 +276,40 @@
             })
         }
     </script>
+
+    <link rel="stylesheet" href="./static/css/weather.css">
+    <link rel="stylesheet" href="./static/css/google-front.css">
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter city name to query weather" spellcheck="false">
+            <button><img src="./static/images/search.png"></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        <div class="weather">
+            <img src="./static/images/rain.png" class="weather-icon">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="./static/images/humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./static/images/wind.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./static/js/weather.js"></script>
     <div class="awcyvan">
         <p>恭喜，你发现了隐藏页面！</p>
         <p>显然，这是awcyvan，也就是我，自己写的</p>
@@ -284,6 +327,7 @@
         <p>blog: home.cnblogs.com/u/awcyvan以及luogu的博客（真的，没啥好看的）</p>
         <p>社团的luogu团队: www.luogu.com.cn/team/31830</p>
         <br>
+        <p>右边是一个天气查询，看看就行了，感觉不太准</p>
         <p>------By awcyvan</p>
         <span>
             <a href="./index.html"></a>
