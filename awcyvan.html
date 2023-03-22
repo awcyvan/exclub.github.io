@@ -143,7 +143,7 @@
         }
         .awcyvan span a::before,.awcyvan span a::after{
             position: absolute;
-            content: '返回';
+            content: var(--t);
             text-transform: uppercase;
             width: 180px;
             height: 55px;
@@ -329,8 +329,11 @@
         <br>
         <p>右边是一个天气查询，看看就行了，感觉不太准</p>
         <p>------By awcyvan</p>
-        <span>
+        <span style="--t: '返回主页'">
             <a href="./index.html"></a>
+        </span>
+        <span style="--t: '获得好心情'">
+            <a href="./zen.html"></a>
         </span>
     </div>
 </body>
