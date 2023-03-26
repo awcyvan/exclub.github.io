@@ -180,7 +180,7 @@
     })
 </script>
 
-<nav id="nav-menu-container">
+<bar id="nav-menu-container">
 <ul class="nav-menu">
 	<li class="menu-active"><a href="#intro">团队首页</a></li>
 	<li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">技术探讨</a></li>
@@ -189,7 +189,7 @@
   <li><a class="btn-get-started scrollto" href="./404.html">极致MC服务器待建……ing</a></li>
   <li><a class="btn-get-started scrollto" href="http://shop.exclub.top/">极致网络商城</a></li>
 </ul>
-</nav>
+</bar>
 </div>
 </header>
 
@@ -253,227 +253,380 @@
 <p>年龄小但不代表我们实力差，沉默是金.</p>
 </div>
 
+<style>
+    .awcyvan_container{
+        position: relative;
+        display: flex;
+        padding: 80px 10px;
+        flex-wrap: wrap;
+        gap: 80px;
+    }
+    .awcyvan_card{
+        position: relative;
+        display: flex;
+        height: 180px;
+        width: 350px;
+        background: #333;
+        transition: 0.5s;
+    }
+    .awcyvan_card:hover{
+        height: 450px;
+    }
+    .awcyvan_card .lines{
+        position: absolute;
+        inset: 0;
+        background: #000;
+        overflow: hidden;
+    }
+    .awcyvan_card .lines::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 150px;
+        background: linear-gradient(transparent,#45f3ff,#45f3ff,#45f3ff,transparent);
+        animation: animate 4s linear infinite;
+        animation-play-state: paused;
+    }
+    .awcyvan_card:hover .lines::before{
+        animation-play-state: running;
+    }
+    @keyframes animate{
+        0%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }
+    }
+    .awcyvan_card .lines::after{
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: #292929;
+    }
+    .awcyvan_card .imgbox{
+        position: absolute;
+        top: -30%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        transform: translateX(-50%);
+        background: #000;
+        transition: 0.5s;
+        z-index: 10;
+        overflow: hidden;
+    }
+    .awcyvan_card:hover .imgbox{
+        top: 5%;
+        width: 200px;
+        height: 200px;
+    }
+    .awcyvan_card .imgbox::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 500px;
+        height: 100px;
+        transform: translate(-50%,-50%);
+        background: linear-gradient(transparent,#ff3c7b,#ff3c7b,#ff3c7b,transparent);
+        animation: animate2 6s linear infinite;
+        animation-play-state: paused;
+    }
+    .awcyvan_card:hover .imgbox::before{
+        animation-play-state: running;
+    }
+    @keyframes animate2{
+        0%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+    }
+    .awcyvan_card .imgbox::after{
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: #292929;
+    }
+    .awcyvan_card .imgbox img{
+        position: absolute;
+        left: 2%;
+        top: 2%;
+        width: 96%;
+        z-index: 1;
+        /* filter: invert(1); */
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .awcyvan_card:hover .imgbox img{
+        opacity: 1;
+    }
+    .awcyvan_card .content{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .awcyvan_card .content .details{
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        transform: translateY(50%);
+    }
+    .awcyvan_card .content .details h2{
+        font-size: 1.5em;
+        font-weight: 500;
+        color: #45f3ff;
+        line-height: 1.2em;
+    }
+    .awcyvan_card .content .details p{
+        color: #fff;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    .awcyvan_card:hover .content .details p{
+        opacity: 1;
+    }
+    .awcyvan_card .content .details span{
+        color: #ff3c7b;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    .awcyvan_card:hover .content .details span{
+        opacity: 1;
+    }
+</style>
 <div class="row">
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=1393889317&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">彷徨中独步</h3>
-
-<center><font>极致网络社<br />
-网站负责人<br />
-极致网络社2022级成员</font></center>
-</div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:1393889317</h4>
-<span>Email:1393889317@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=3260893736&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">内卷魔方鸭</h3>
-
-<center><font>极致网络社<br />
-C++大佬<br />
-极致网络社2022级成员</font></center>
-</div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:3260893736</h4>
-<span>Email:3260893736@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=3156477473&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">鑫骐</h3>
-<font>极致网络社<br />
-C++大佬<br />
-极致网络社2022级社长</font></div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:3156477473</h4>
-<span>Email:3156477473@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=2494812413&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">溪深而鱼肥</h3>
-
-<center><font>极致网络社<br />
-2021级社长<br />
-擅长影视后期，前期拍摄</font></center>
-</div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:2494812413</h4>
-<span>Email:2494812413@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=3565756799&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">ah</h3>
-
-<center><font>极致网络社<br />
-2022级城西现任社长<br>
-</font></center>
-</div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:3565756799</h4>
-<span>Email:3565756799@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-<div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=2325194851&amp;s=640" />
-<div class="name-plate text-center">
-<h3 class="expert-name">和风</h3>
-
-<center><font>极致网络社<br />
-2021级城西社长<br>
-</font></center>
-</div>
-
-<div class="member-info">
-<div class="member-info-content">
-<h4>QQ:2325194851</h4>
-<span>Email:2325194851@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-  <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=2775184711&amp;s=640" />
-  <div class="name-plate text-center">
-  <h3 class="expert-name">FL.</h3>
-  
-  <center><font>极致网络社<br />
-  2022级成员<br />
-  MC生存建筑大佬<br />
-  </font></center>
-  </div>
-  
-  <div class="member-info">
-  <div class="member-info-content">
-  <h4>QQ:2775184711</h4>
-  <span>Email:2775184711@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-  <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=1719387447&amp;s=640" />
-  <div class="name-plate text-center">
-  <h3 class="expert-name">醯</h3>
-  
-  <center><font>极致网络社<br />
-  2022级成员<br />
-  社团颜值担当（妹纸）<br />
-  </font></center>
-  </div>
-  
-  <div class="member-info">
-  <div class="member-info-content">
-  <h4>QQ:1719387447</h4>
-  <span>Email:1719387447@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-    <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=2579311246&amp;s=640" />
-    <div class="name-plate text-center">
-    <h3 class="expert-name">somebody康</h3>
-    
-    <center><font>极致网络社<br />
-    2021级成员<br />
-    抽象带师，超级舟批（应本人要求修改）<br />
-    </font></center>
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1393889317&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>彷徨中独步</h2>
+                    <p>极致网络社<br />
+                    2021级成员<br />
+                    网站负责人</p>
+                    <span>QQ:1393889317</span><br>
+                    <span>Email:1393889317@qq.com</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="member-info">
-    <div class="member-info-content">
-    <h4>QQ:2579311246</h4>
-    <span>Email:2579311246@qq.com</span></div>
-</div>
-</div>
-</div>
 
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-    <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=2430956729&amp;s=640" />
-    <div class="name-plate text-center">
-    <h3 class="expert-name">Adlin張</h3>
-    
-    <center><font>极致网络社<br />
-    2019级成员<br />
-    视频制作方面的大佬<br />
-    </font></center>
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3260893736&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>内卷魔方鸭</h2>
+                    <p>极致网络社<br />
+                    2022级成员<br />
+                    C++大佬</p>
+                    <span>QQ:3260893736</span><br>
+                    <span>Email:3260893736@qq.com</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="member-info">
-    <div class="member-info-content">
-    <h4>QQ:2430956729</h4>
-    <span>Email:2430956729@qq.com</span></div>
-</div>
-</div>
-</div>
 
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-    <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=1229495152&amp;s=640" />
-    <div class="name-plate text-center">
-    <h3 class="expert-name">白菜</h3>
-    
-    <center><font>极致网络社<br />
-    2020级社长<br />
-    学霸！<br />
-    </font></center>
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3156477473&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>鑫骐</h2>
+                    <p>极致网络社<br />
+                    2022级社长<br />
+                    C++大佬</p>
+                    <span>QQ:3156477473</span><br>
+                    <span>Email:3156477473@qq.com</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="member-info">
-    <div class="member-info-content">
-    <h4>QQ:1229495152</h4>
-    <span>Email:1229495152@qq.com</span></div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-    <div class="member"><img alt="" class="img-fluid" src="http://q1.qlogo.cn/g?b=qq&amp;nk=3107918016&amp;s=640" />
-    <div class="name-plate text-center">
-    <h3 class="expert-name">awcyvan</h3>
-    
-    <center><font>极致网络社<br />
-    2021级成员<br />
-    编程团队核心成员<br />
-    </font></center>
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2494812413&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>溪深而鱼肥</h2>
+                    <p>极致网络社<br />
+                    2021级社长<br />
+                    擅长影视后期，前期拍摄</p>
+                    <span>QQ:2494812413</span><br>
+                    <span>Email:2494812413@qq.com</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="member-info">
-    <div class="member-info-content">
-    <h4><a href="./awcyvan.html">QQ:3107918016</a></h4>
-    <span>Email:3107918016@qq.com</span></div>
-</div>
-</div>
-</div>
 
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3565756799&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>ah</h2>
+                    <p>极致网络社<br />
+                    2022级成员<br />
+                    城西校区现任社长</p>
+                    <span>QQ:3565756799</span><br>
+                    <span>Email:3565756799@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2325194851&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>和风</h2>
+                    <p>极致网络社<br />
+                    2021级城西社长<br />
+                    </p>
+                    <span>QQ:2325194851</span><br>
+                    <span>Email:2325194851@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2775184711&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>FL.</h2>
+                    <p>极致网络社<br />
+                    2022级成员<br />
+                    MC生存建筑大佬</p>
+                    <span>QQ:2775184711</span><br>
+                    <span>Email:2775184711@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1719387447&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>醯</h2>
+                    <p>极致网络社<br />
+                    2022级成员<br />
+                    社团颜值担当（妹纸）</p>
+                    <span>QQ:1719387447</span><br>
+                    <span>Email:1719387447@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2579311246&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>somebody康</h2>
+                    <p>极致网络社<br />
+                    2021级成员<br />
+                    抽象带师，超级舟批（应本人要求修改）</p>
+                    <span>QQ:2579311246</span><br>
+                    <span>Email:2579311246@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2430956729&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Adlin張</h2>
+                    <p>极致网络社<br />
+                    2019级成员<br />
+                    擅长视频后期制作</p>
+                    <span>QQ:2430956729</span><br>
+                    <span>Email:2430956729@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1229495152&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>白菜</h2>
+                    <p>极致网络社<br />
+                    2020级社长<br />
+                    应本人要求暂时留空</p>
+                    <span>QQ:1229495152</span><br>
+                    <span>Email:1229495152@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awcyvan_container">
+        <div class="awcyvan_card">
+            <div class="lines"></div>
+            <div class="imgbox">
+                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3107918016&amp;s=640">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2><a href="./awcyvan.html">awcyvan</a></h2>
+                    <p>极致网络社<br />
+                    2021级成员<br />
+                    编程团队核心成员</p>
+                    <span>QQ:3107918016</span><br>
+                    <span>Email:3107918016@qq.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>
